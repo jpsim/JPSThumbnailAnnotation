@@ -8,6 +8,7 @@
 
 #import <MapKit/MapKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import "JPSThumbnail.h"
 
 @protocol JPSThumbnailAnnotationViewProtocol <NSObject>
 

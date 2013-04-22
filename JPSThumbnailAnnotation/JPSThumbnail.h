@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 
+typedef void (^ActionBlock)();
+
 @interface JPSThumbnail : NSObject
 
 @property (nonatomic, strong) UIImage *image;
