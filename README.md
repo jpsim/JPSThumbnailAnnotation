@@ -1,6 +1,6 @@
 # JPSThumbnailAnnotation
 
-JPSThumbnailAnnotation is a simple mapkit annotation view for displaying people with clean design and animations.
+JPSThumbnailAnnotation is a simple mapkit annotation view for displaying people with clean design and animations. It is 100% programmatically drawn.
 
 ![JPSThumbnailAnnotation in action](screenshots.jpg)
 
