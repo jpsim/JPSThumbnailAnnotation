@@ -165,7 +165,7 @@
 			dependencies = (
 			);
 			name = JPSThumbnailAnnotation;
-			productName = JPSAvatarCalloutView;
+			productName = JPSThumbnailAnnotation;
 			productReference = E875D68417245D6C00009A6F /* JPSThumbnailAnnotation.app */;
 			productType = "com.apple.product-type.application";
 		};
