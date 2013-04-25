@@ -10,6 +10,17 @@
 #import <QuartzCore/QuartzCore.h>
 #import "JPSThumbnail.h"
 
+typedef enum {
+    JPSThumbnailAnnotationViewAnimationDirectionGrow,
+    JPSThumbnailAnnotationViewAnimationDirectionShrink,
+} JPSThumbnailAnnotationViewAnimationDirection;
+
+typedef enum {
+    JPSThumbnailAnnotationViewStateCollapsed,
+    JPSThumbnailAnnotationViewStateExpanded,
+    JPSThumbnailAnnotationViewStateAnimating,
+} JPSThumbnailAnnotationViewState;
+
 @protocol JPSThumbnailAnnotationViewProtocol <NSObject>
 
 - (void)didSelectAnnotationViewInMap:(MKMapView *)mapView;
@@ -21,6 +32,7 @@
     CAShapeLayer *_shapeLayer;
     CAShapeLayer *_strokeAndShadowLayer;
     UIButton *_disclosureButton;
+    JPSThumbnailAnnotationViewState _state;
 }
 
 @property (nonatomic, readwrite) CLLocationCoordinate2D coordinate;

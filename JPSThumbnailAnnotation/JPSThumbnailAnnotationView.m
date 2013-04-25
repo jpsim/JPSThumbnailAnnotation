@@ -15,11 +15,6 @@
 #define JPSThumbnailAnnotationViewAnimationDuration 0.25f
 #define JPSThumbnailAnnotationViewShadowVisible     TRUE
 
-typedef enum {
-    JPSThumbnailAnnotationViewAnimationDirectionGrow,
-    JPSThumbnailAnnotationViewAnimationDirectionShrink,
-} JPSThumbnailAnnotationViewAnimationDirection;
-
 @interface ShadowShapeLayer : CAShapeLayer
 @end
 
@@ -82,6 +77,8 @@ typedef enum {
         [_disclosureButton addTarget:self action:@selector(didTapDisclosureButton:) forControlEvents:UIControlEventTouchDown];
         _disclosureButton.alpha = 0;
         [self addSubview:_disclosureButton];
+        
+        _state = JPSThumbnailAnnotationViewStateCollapsed;
         
         [self setLayerProperties];
     }
@@ -181,6 +178,9 @@ typedef enum {
 }
 
 - (void)expand {
+    if (_state != JPSThumbnailAnnotationViewStateCollapsed) return;
+    _state = JPSThumbnailAnnotationViewStateAnimating;
+    
     self.centerOffset = CGPointMake(JPSThumbnailAnnotationViewExpandOffset/2, -JPSThumbnailAnnotationViewVerticalOffset);
     [self animateBubbleWithDirection:JPSThumbnailAnnotationViewAnimationDirectionGrow];
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width+JPSThumbnailAnnotationViewExpandOffset, self.frame.size.height);
@@ -188,10 +188,15 @@ typedef enum {
         _disclosureButton.alpha = 1;
         _titleLabel.alpha = 1;
         _subtitleLabel.alpha = 1;
-    } completion:nil];
+    } completion:^(BOOL finished) {
+        _state = JPSThumbnailAnnotationViewStateExpanded;
+    }];
 }
 
 - (void)shrink {
+    if (_state != JPSThumbnailAnnotationViewStateExpanded) return;
+    _state = JPSThumbnailAnnotationViewStateAnimating;
+    
     self.centerOffset = CGPointMake(0, -JPSThumbnailAnnotationViewVerticalOffset);
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width-JPSThumbnailAnnotationViewExpandOffset, self.frame.size.height);
     [UIView animateWithDuration:JPSThumbnailAnnotationViewAnimationDuration/2 delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -210,6 +215,10 @@ typedef enum {
             _imageView.frame = CGRectMake(_imageView.frame.origin.x-JPSThumbnailAnnotationViewExpandOffset/2, _imageView.frame.origin.y, _imageView.frame.size.width, _imageView.frame.size.height);
         } else if (animationDirection == JPSThumbnailAnnotationViewAnimationDirectionShrink) {
             _imageView.frame = CGRectMake(_imageView.frame.origin.x+JPSThumbnailAnnotationViewExpandOffset/2, _imageView.frame.origin.y, _imageView.frame.size.width, _imageView.frame.size.height);
+        }
+    } completion:^(BOOL finished) {
+        if (animationDirection == JPSThumbnailAnnotationViewAnimationDirectionShrink) {
+            _state = JPSThumbnailAnnotationViewStateCollapsed;
         }
     }];
     
