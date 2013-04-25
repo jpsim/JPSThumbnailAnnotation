@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.author   = { 'JP Simard' => 'jp@jpsim.com' }
   s.source   = { :git => 'https://github.com/jpsim/JPSThumbnailAnnotation.git', :tag => s.version.to_s }
 
-  s.description = 'JPSThumbnailAnnotation is a simple mapkit annotation view for displaying people with clean design and animations.'
+  s.description = 'JPSThumbnailAnnotation is a simple mapkit annotation view for displaying images with clean design and animations.'
 
   s.source_files = 'JPSThumbnailAnnotation/*.{h,m}'
   s.frameworks   = 'QuartzCore, MapKit, CoreLocation'
