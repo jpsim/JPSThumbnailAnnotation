@@ -13,7 +13,7 @@
 - (id)initWithThumbnail:(JPSThumbnail *)thumbnail {
     self = [super init];
     if (self) {
-        self.coordinate = thumbnail.coordinate;
+        _coordinate = thumbnail.coordinate;
         _thumbnail = thumbnail;
     }
     
@@ -34,10 +34,10 @@
 - (void)updateThumbnail:(JPSThumbnail *)thumbnail animated:(BOOL)animated {
     if (animated) {
         [UIView animateWithDuration:0.33f animations:^{
-            self.coordinate = thumbnail.coordinate;
+            _coordinate = thumbnail.coordinate;
         }];
     } else {
-        self.coordinate = thumbnail.coordinate;
+        _coordinate = thumbnail.coordinate;
     }
     
     if (_view) {
