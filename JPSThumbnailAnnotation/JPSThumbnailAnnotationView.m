@@ -8,7 +8,7 @@
 
 #import "JPSThumbnailAnnotationView.h"
 
-#define JPSThumbnailAnnotationViewStandardWidth     75.0f
+#define JPSThumbnailAnnotationViewStandardWidth     67.0f
 #define JPSThumbnailAnnotationViewStandardHeight    87.0f
 #define JPSThumbnailAnnotationViewExpandOffset      200.0f
 #define JPSThumbnailAnnotationViewVerticalOffset    34.0f
@@ -41,7 +41,7 @@
         self.centerOffset = CGPointMake(0, -JPSThumbnailAnnotationViewVerticalOffset);
         
         // Image View
-        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(12.5, 12, 50, 47)];
+        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(12.5, 12, 42.5, 47)];
         _imageView.layer.cornerRadius = 4.0;
         _imageView.layer.masksToBounds = YES;
         _imageView.layer.borderColor = [[UIColor blackColor] CGColor];
@@ -181,9 +181,9 @@
     if (_state != JPSThumbnailAnnotationViewStateCollapsed) return;
     _state = JPSThumbnailAnnotationViewStateAnimating;
     
-    self.centerOffset = CGPointMake(JPSThumbnailAnnotationViewExpandOffset/2, -JPSThumbnailAnnotationViewVerticalOffset);
     [self animateBubbleWithDirection:JPSThumbnailAnnotationViewAnimationDirectionGrow];
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width+JPSThumbnailAnnotationViewExpandOffset, self.frame.size.height);
+    self.centerOffset = CGPointMake(JPSThumbnailAnnotationViewExpandOffset/2, -JPSThumbnailAnnotationViewVerticalOffset);
     [UIView animateWithDuration:JPSThumbnailAnnotationViewAnimationDuration/2 delay:JPSThumbnailAnnotationViewAnimationDuration options:UIViewAnimationOptionCurveEaseInOut animations:^{
         _disclosureButton.alpha = 1;
         _titleLabel.alpha = 1;
@@ -196,8 +196,7 @@
 - (void)shrink {
     if (_state != JPSThumbnailAnnotationViewStateExpanded) return;
     _state = JPSThumbnailAnnotationViewStateAnimating;
-    
-    self.centerOffset = CGPointMake(0, -JPSThumbnailAnnotationViewVerticalOffset);
+
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width-JPSThumbnailAnnotationViewExpandOffset, self.frame.size.height);
     [UIView animateWithDuration:JPSThumbnailAnnotationViewAnimationDuration/2 delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
         _disclosureButton.alpha = 0;
@@ -205,6 +204,7 @@
         _subtitleLabel.alpha = 0;
     } completion:^(BOOL finished) {
         [self animateBubbleWithDirection:JPSThumbnailAnnotationViewAnimationDirectionShrink];
+        self.centerOffset = CGPointMake(0, -JPSThumbnailAnnotationViewVerticalOffset);
     }];
 }
 
