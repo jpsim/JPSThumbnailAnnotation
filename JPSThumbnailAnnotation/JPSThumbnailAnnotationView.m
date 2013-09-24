@@ -181,9 +181,9 @@
     if (_state != JPSThumbnailAnnotationViewStateCollapsed) return;
     _state = JPSThumbnailAnnotationViewStateAnimating;
     
-    self.centerOffset = CGPointMake(JPSThumbnailAnnotationViewExpandOffset/2, -JPSThumbnailAnnotationViewVerticalOffset);
     [self animateBubbleWithDirection:JPSThumbnailAnnotationViewAnimationDirectionGrow];
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width+JPSThumbnailAnnotationViewExpandOffset, self.frame.size.height);
+    self.centerOffset = CGPointMake(JPSThumbnailAnnotationViewExpandOffset/2, -JPSThumbnailAnnotationViewVerticalOffset);
     [UIView animateWithDuration:JPSThumbnailAnnotationViewAnimationDuration/2 delay:JPSThumbnailAnnotationViewAnimationDuration options:UIViewAnimationOptionCurveEaseInOut animations:^{
         _disclosureButton.alpha = 1;
         _titleLabel.alpha = 1;
@@ -196,8 +196,7 @@
 - (void)shrink {
     if (_state != JPSThumbnailAnnotationViewStateExpanded) return;
     _state = JPSThumbnailAnnotationViewStateAnimating;
-    
-    self.centerOffset = CGPointMake(0, -JPSThumbnailAnnotationViewVerticalOffset);
+
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width-JPSThumbnailAnnotationViewExpandOffset, self.frame.size.height);
     [UIView animateWithDuration:JPSThumbnailAnnotationViewAnimationDuration/2 delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
         _disclosureButton.alpha = 0;
@@ -205,6 +204,7 @@
         _subtitleLabel.alpha = 0;
     } completion:^(BOOL finished) {
         [self animateBubbleWithDirection:JPSThumbnailAnnotationViewAnimationDirectionShrink];
+        self.centerOffset = CGPointMake(0, -JPSThumbnailAnnotationViewVerticalOffset);
     }];
 }
 
