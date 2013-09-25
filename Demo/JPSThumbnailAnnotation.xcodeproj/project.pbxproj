@@ -304,6 +304,7 @@
 				GCC_PREFIX_HEADER = "JPSThumbnailAnnotation-Prefix.pch";
 				INFOPLIST_FILE = "JPSThumbnailAnnotation-Info.plist";
 				PRODUCT_NAME = JPSThumbnailAnnotation;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -315,6 +316,7 @@
 				GCC_PREFIX_HEADER = "JPSThumbnailAnnotation-Prefix.pch";
 				INFOPLIST_FILE = "JPSThumbnailAnnotation-Info.plist";
 				PRODUCT_NAME = JPSThumbnailAnnotation;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
