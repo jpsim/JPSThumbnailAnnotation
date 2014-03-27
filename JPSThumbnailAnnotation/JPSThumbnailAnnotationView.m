@@ -88,7 +88,9 @@ static CGFloat const kJPSThumbnailAnnotationViewAnimationDuration = 0.25f;
 }
 
 - (void)setupDisclosureButton {
-    _disclosureButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    BOOL iOS7 = [[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0f;
+    UIButtonType buttonType = iOS7 ? UIButtonTypeSystem : UIButtonTypeCustom;
+    _disclosureButton = [UIButton buttonWithType:buttonType];
     _disclosureButton.tintColor = [UIColor grayColor];
     UIImage *disclosureIndicatorImage = [JPSThumbnailAnnotationView disclosureButtonImage];
     [_disclosureButton setImage:disclosureIndicatorImage forState:UIControlStateNormal];

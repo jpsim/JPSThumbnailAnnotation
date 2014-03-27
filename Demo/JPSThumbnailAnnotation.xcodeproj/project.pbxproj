@@ -294,7 +294,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JPSThumbnailAnnotation-Prefix.pch";
 				INFOPLIST_FILE = "JPSThumbnailAnnotation-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = JPSThumbnailAnnotation;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -308,7 +307,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JPSThumbnailAnnotation-Prefix.pch";
 				INFOPLIST_FILE = "JPSThumbnailAnnotation-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = JPSThumbnailAnnotation;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
