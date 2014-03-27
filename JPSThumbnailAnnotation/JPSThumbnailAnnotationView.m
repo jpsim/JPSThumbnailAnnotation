@@ -6,93 +6,133 @@
 //  Copyright (c) 2013 JP Simard. All rights reserved.
 //
 
+@import QuartzCore;
 #import "JPSThumbnailAnnotationView.h"
+#import "JPSThumbnail.h"
 
-#define JPSThumbnailAnnotationViewStandardWidth     75.0f
-#define JPSThumbnailAnnotationViewStandardHeight    87.0f
-#define JPSThumbnailAnnotationViewExpandOffset      200.0f
-#define JPSThumbnailAnnotationViewVerticalOffset    34.0f
-#define JPSThumbnailAnnotationViewAnimationDuration 0.25f
-#define JPSThumbnailAnnotationViewShadowVisible     TRUE
+NSString * const kJPSThumbnailAnnotationViewReuseID = @"JPSThumbnailAnnotationView";
 
-@interface ShadowShapeLayer : CAShapeLayer
-@end
+static CGFloat const kJPSThumbnailAnnotationViewStandardWidth     = 75.0f;
+static CGFloat const kJPSThumbnailAnnotationViewStandardHeight    = 87.0f;
+static CGFloat const kJPSThumbnailAnnotationViewExpandOffset      = 200.0f;
+static CGFloat const kJPSThumbnailAnnotationViewVerticalOffset    = 34.0f;
+static CGFloat const kJPSThumbnailAnnotationViewAnimationDuration = 0.25f;
 
-@implementation ShadowShapeLayer
+@interface JPSThumbnailAnnotationView ()
 
-- (void)drawInContext:(CGContextRef)context {
-    CGContextSaveGState(context);
-    CGContextSetShadow(context, CGSizeMake(0, 6), 6);
-    [super drawInContext:context];
-    CGContextRestoreGState(context);
-}
+@property (nonatomic, readwrite) CLLocationCoordinate2D coordinate;
+@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *subtitleLabel;
+@property (nonatomic, strong) ActionBlock disclosureBlock;
+
+@property (nonatomic, strong) CAShapeLayer *bgLayer;
+@property (nonatomic, strong) UIButton *disclosureButton;
+@property (nonatomic, assign) JPSThumbnailAnnotationViewState state;
 
 @end
 
 @implementation JPSThumbnailAnnotationView
 
+#pragma mark - Setup
+
 - (id)initWithAnnotation:(id<MKAnnotation>)annotation {
-    self = [super initWithAnnotation:annotation reuseIdentifier:@"JPSThumbnailAnnotationView"];
+    self = [super initWithAnnotation:annotation reuseIdentifier:kJPSThumbnailAnnotationViewReuseID];
     
     if (self) {
         self.canShowCallout = NO;
-        self.frame = CGRectMake(0, 0, JPSThumbnailAnnotationViewStandardWidth, JPSThumbnailAnnotationViewStandardHeight);
+        self.frame = CGRectMake(0, 0, kJPSThumbnailAnnotationViewStandardWidth, kJPSThumbnailAnnotationViewStandardHeight);
         self.backgroundColor = [UIColor clearColor];
-        self.centerOffset = CGPointMake(0, -JPSThumbnailAnnotationViewVerticalOffset);
-        
-        // Image View
-        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(12.5, 12, 50, 47)];
-        _imageView.layer.cornerRadius = 4.0;
-        _imageView.layer.masksToBounds = YES;
-        _imageView.layer.borderColor = [[UIColor blackColor] CGColor];
-        _imageView.layer.borderWidth = 1;
-        [self addSubview:_imageView];
-        
-        // Name Label
-        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(-32, 20, 168, 20)];
-        _titleLabel.backgroundColor = [UIColor clearColor];
-        _titleLabel.textColor = [UIColor whiteColor];
-        _titleLabel.shadowColor = [UIColor colorWithWhite:0 alpha:0.5];
-        _titleLabel.shadowOffset = CGSizeMake(0, -1);
-        _titleLabel.font = [UIFont boldSystemFontOfSize:17];
-        _titleLabel.alpha = 0;
-        _titleLabel.minimumScaleFactor = .8f;
-        _titleLabel.adjustsFontSizeToFitWidth = YES;
-        [self addSubview:_titleLabel];
-        
-        // Distance Label
-        _subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(-32, 36, 168, 20)];
-        _subtitleLabel.backgroundColor = [UIColor clearColor];
-        _subtitleLabel.textColor = [UIColor whiteColor];
-        _subtitleLabel.shadowColor = [UIColor colorWithWhite:0 alpha:0.5];
-        _subtitleLabel.shadowOffset = CGSizeMake(0, -1);
-        _subtitleLabel.font = [UIFont systemFontOfSize:12];
-        _subtitleLabel.alpha = 0;
-        [self addSubview:_subtitleLabel];
-        
-        // Disclosure button
-        _disclosureButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-        _disclosureButton.frame = CGRectMake(JPSThumbnailAnnotationViewExpandOffset/2 + self.frame.size.width/2 - 4.0f, 21, _disclosureButton.frame.size.width, _disclosureButton.frame.size.height);
-        
-        [_disclosureButton addTarget:self action:@selector(didTapDisclosureButton:) forControlEvents:UIControlEventTouchDown];
-        _disclosureButton.alpha = 0;
-        [self addSubview:_disclosureButton];
+        self.centerOffset = CGPointMake(0, -kJPSThumbnailAnnotationViewVerticalOffset);
         
         _state = JPSThumbnailAnnotationViewStateCollapsed;
         
-        [self setLayerProperties];
+        [self setupView];
     }
     
     return self;
 }
 
-- (void)didTapDisclosureButton:(id)sender {
-    if (_disclosureBlock) _disclosureBlock();
+- (void)setupView {
+    [self setupImageView];
+    [self setupTitleLabel];
+    [self setupSubtitleLabel];
+    [self setupDisclosureButton];
+    [self setLayerProperties];
+    [self setDetailGroupAlpha:0.0f];
 }
+
+- (void)setupImageView {
+    _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(12.5f, 12.5f, 50.0f, 47.0f)];
+    _imageView.layer.cornerRadius = 4.0f;
+    _imageView.layer.masksToBounds = YES;
+    _imageView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    _imageView.layer.borderWidth = 0.5f;
+    [self addSubview:_imageView];
+}
+
+- (void)setupTitleLabel {
+    _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(-32.0f, 16.0f, 168.0f, 20.0f)];
+    _titleLabel.textColor = [UIColor darkTextColor];
+    _titleLabel.font = [UIFont boldSystemFontOfSize:17];
+    _titleLabel.minimumScaleFactor = 0.8f;
+    _titleLabel.adjustsFontSizeToFitWidth = YES;
+    [self addSubview:_titleLabel];
+}
+
+- (void)setupSubtitleLabel {
+    _subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(-32.0f, 36.0f, 168.0f, 20.0f)];
+    _subtitleLabel.textColor = [UIColor grayColor];
+    _subtitleLabel.font = [UIFont systemFontOfSize:12.0f];
+    [self addSubview:_subtitleLabel];
+}
+
+- (void)setupDisclosureButton {
+    _disclosureButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    _disclosureButton.tintColor = [UIColor grayColor];
+    UIImage *disclosureIndicatorImage = [JPSThumbnailAnnotationView disclosureButtonImage];
+    [_disclosureButton setImage:disclosureIndicatorImage forState:UIControlStateNormal];
+    _disclosureButton.frame = CGRectMake(kJPSThumbnailAnnotationViewExpandOffset/2.0f + self.frame.size.width/2.0f + 8.0f,
+                                         26.5f,
+                                         disclosureIndicatorImage.size.width,
+                                         disclosureIndicatorImage.size.height);
+    
+    [_disclosureButton addTarget:self action:@selector(didTapDisclosureButton) forControlEvents:UIControlEventTouchDown];
+    [self addSubview:_disclosureButton];
+}
+
+- (void)setLayerProperties {
+    _bgLayer = [CAShapeLayer layer];
+    CGPathRef path = [self newBubbleWithRect:self.bounds];
+    _bgLayer.path = path;
+    CFRelease(path);
+    _bgLayer.fillColor = [UIColor whiteColor].CGColor;
+    
+    _bgLayer.shadowColor = [UIColor blackColor].CGColor;
+    _bgLayer.shadowOffset = CGSizeMake(0.0f, 3.0f);
+    _bgLayer.shadowRadius = 2.0f;
+    _bgLayer.shadowOpacity = 0.5f;
+    
+    _bgLayer.masksToBounds = NO;
+    
+    [self.layer insertSublayer:_bgLayer atIndex:0];
+}
+
+#pragma mark - Updating
+
+- (void)updateWithThumbnail:(JPSThumbnail *)thumbnail {
+    self.coordinate = thumbnail.coordinate;
+    self.titleLabel.text = thumbnail.title;
+    self.subtitleLabel.text = thumbnail.subtitle;
+    self.imageView.image = thumbnail.image;
+    self.disclosureBlock = thumbnail.disclosureBlock;
+}
+
+#pragma mark - JPSThumbnailAnnotationViewProtocol
 
 - (void)didSelectAnnotationViewInMap:(MKMapView *)mapView {
     // Center map at annotation point
-    [mapView setCenterCoordinate:_coordinate animated:YES];
+    [mapView setCenterCoordinate:self.coordinate animated:YES];
     [self expand];
 }
 
@@ -100,160 +140,138 @@
     [self shrink];
 }
 
-- (void)setLayerProperties {
-    _shapeLayer = [ShadowShapeLayer layer];
-    CGPathRef shapeLayerPath = [self newBubbleWithRect:self.bounds andOffset:CGSizeMake(JPSThumbnailAnnotationViewExpandOffset/2, 0)];
-    _shapeLayer.path = shapeLayerPath;
-    CGPathRelease(shapeLayerPath);
-    
-    // Fill Callout Bubble & Add Shadow
-    _shapeLayer.fillColor = [[UIColor blackColor] CGColor];
-    
-    _strokeAndShadowLayer = [CAShapeLayer layer];
-    
-    CGPathRef _strokeAndShadowLayerPath = [self newBubbleWithRect:self.bounds];
-    _strokeAndShadowLayer.path = _strokeAndShadowLayerPath;
-    CGPathRelease(_strokeAndShadowLayerPath);
-    
-    _strokeAndShadowLayer.fillColor = [UIColor clearColor].CGColor;
-    
-    if (JPSThumbnailAnnotationViewShadowVisible) {
-        _strokeAndShadowLayer.shadowColor = [UIColor blackColor].CGColor;
-        _strokeAndShadowLayer.shadowOffset = CGSizeMake (0, [[[UIDevice currentDevice] systemVersion] floatValue] >= 3.2 ? 3 : -3);
-        _strokeAndShadowLayer.shadowRadius = 5.0;
-        _strokeAndShadowLayer.shadowOpacity = 1.0;
-    }
-    
-    _strokeAndShadowLayer.strokeColor = [UIColor colorWithWhite:0.22 alpha:1.0].CGColor;
-    _strokeAndShadowLayer.lineWidth = 1.0;
-    
-    CAGradientLayer *bubbleGradient = [CAGradientLayer layer];
-    bubbleGradient.frame = CGRectMake(self.bounds.origin.x-JPSThumbnailAnnotationViewExpandOffset/2, self.bounds.origin.y, JPSThumbnailAnnotationViewExpandOffset+self.bounds.size.width, self.bounds.size.height-7);
-    bubbleGradient.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:0 alpha:.75].CGColor, (id)[UIColor colorWithWhite:0 alpha:.75].CGColor,(id)[UIColor colorWithWhite:0.13 alpha:.75].CGColor,(id)[UIColor colorWithWhite:0.33 alpha:.75].CGColor, nil];
-    bubbleGradient.locations = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0],[NSNumber numberWithFloat:0.53],[NSNumber numberWithFloat:.54],[NSNumber numberWithFloat:1], nil];
-    bubbleGradient.startPoint = CGPointMake(0.0f, 1.0f);
-    bubbleGradient.endPoint = CGPointMake(0.0f, 0.0f);
-    bubbleGradient.mask = _shapeLayer;
-    
-    _shapeLayer.masksToBounds = NO;
-    bubbleGradient.masksToBounds = NO;
-    _strokeAndShadowLayer.masksToBounds = NO;
-    
-    [_strokeAndShadowLayer addSublayer:bubbleGradient];
-    [self.layer insertSublayer:_strokeAndShadowLayer atIndex:0];
-}
+#pragma mark - Geometry
 
 - (CGPathRef)newBubbleWithRect:(CGRect)rect {
-    CGFloat stroke = 1.0;
-	CGFloat radius = 7.0;
+    CGFloat stroke = 1.0f;
+	CGFloat radius = 7.0f;
 	CGMutablePathRef path = CGPathCreateMutable();
-	CGFloat parentX = rect.origin.x + rect.size.width/2;
+	CGFloat parentX = rect.origin.x + rect.size.width/2.0f;
 	
-	//Determine Size
-	rect.size.width -= stroke + 14;
-	rect.size.height -= stroke + 29;
-	rect.origin.x += stroke / 2.0 + 7;
-	rect.origin.y += stroke / 2.0 + 7;
+	// Determine Size
+	rect.size.width -= stroke + 14.0f;
+	rect.size.height -= stroke + 29.0f;
+	rect.origin.x += stroke / 2.0f + 7.0f;
+	rect.origin.y += stroke / 2.0f + 7.0f;
     
-	//Create Path For Callout Bubble
+	// Create Callout Bubble Path
 	CGPathMoveToPoint(path, NULL, rect.origin.x, rect.origin.y + radius);
 	CGPathAddLineToPoint(path, NULL, rect.origin.x, rect.origin.y + rect.size.height - radius);
 	CGPathAddArc(path, NULL, rect.origin.x + radius, rect.origin.y + rect.size.height - radius, radius, M_PI, M_PI_2, 1);
-	CGPathAddLineToPoint(path, NULL, parentX - 14, rect.origin.y + rect.size.height);
-	CGPathAddLineToPoint(path, NULL, parentX, rect.origin.y + rect.size.height + 14);
-	CGPathAddLineToPoint(path, NULL, parentX + 14, rect.origin.y + rect.size.height);
+	CGPathAddLineToPoint(path, NULL, parentX - 14.0f, rect.origin.y + rect.size.height);
+	CGPathAddLineToPoint(path, NULL, parentX, rect.origin.y + rect.size.height + 14.0f);
+	CGPathAddLineToPoint(path, NULL, parentX + 14.0f, rect.origin.y + rect.size.height);
 	CGPathAddLineToPoint(path, NULL, rect.origin.x + rect.size.width - radius, rect.origin.y + rect.size.height);
-	CGPathAddArc(path, NULL, rect.origin.x + rect.size.width - radius, rect.origin.y + rect.size.height - radius, radius, M_PI_2, 0.0f, 1);
+	CGPathAddArc(path, NULL, rect.origin.x + rect.size.width - radius, rect.origin.y + rect.size.height - radius, radius, M_PI_2, 0.0f, 1.0f);
 	CGPathAddLineToPoint(path, NULL, rect.origin.x + rect.size.width, rect.origin.y + radius);
-	CGPathAddArc(path, NULL, rect.origin.x + rect.size.width - radius, rect.origin.y + radius, radius, 0.0f, -M_PI_2, 1);
+	CGPathAddArc(path, NULL, rect.origin.x + rect.size.width - radius, rect.origin.y + radius, radius, 0.0f, -M_PI_2, 1.0f);
 	CGPathAddLineToPoint(path, NULL, rect.origin.x + radius, rect.origin.y);
-	CGPathAddArc(path, NULL, rect.origin.x + radius, rect.origin.y + radius, radius, -M_PI_2, M_PI, 1);
+	CGPathAddArc(path, NULL, rect.origin.x + radius, rect.origin.y + radius, radius, -M_PI_2, M_PI, 1.0f);
 	CGPathCloseSubpath(path);
     return path;
 }
 
-- (CGPathRef)newBubbleWithRect:(CGRect)rect andOffset:(CGSize)offset {
-    CGRect offsetRect = CGRectMake(rect.origin.x+offset.width, rect.origin.y+offset.height, rect.size.width, rect.size.height);
-    return [self newBubbleWithRect:offsetRect];
+#pragma mark - Animations
+
+- (void)setDetailGroupAlpha:(CGFloat)alpha {
+    self.disclosureButton.alpha = alpha;
+    self.titleLabel.alpha = alpha;
+    self.subtitleLabel.alpha = alpha;
 }
 
 - (void)expand {
-    if (_state != JPSThumbnailAnnotationViewStateCollapsed) return;
-    _state = JPSThumbnailAnnotationViewStateAnimating;
+    if (self.state != JPSThumbnailAnnotationViewStateCollapsed) return;
+    
+    self.state = JPSThumbnailAnnotationViewStateAnimating;
     
     [self animateBubbleWithDirection:JPSThumbnailAnnotationViewAnimationDirectionGrow];
-    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width+JPSThumbnailAnnotationViewExpandOffset, self.frame.size.height);
-    self.centerOffset = CGPointMake(JPSThumbnailAnnotationViewExpandOffset/2, -JPSThumbnailAnnotationViewVerticalOffset);
-    [UIView animateWithDuration:JPSThumbnailAnnotationViewAnimationDuration/2 delay:JPSThumbnailAnnotationViewAnimationDuration options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        _disclosureButton.alpha = 1;
-        _titleLabel.alpha = 1;
-        _subtitleLabel.alpha = 1;
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width+kJPSThumbnailAnnotationViewExpandOffset, self.frame.size.height);
+    self.centerOffset = CGPointMake(kJPSThumbnailAnnotationViewExpandOffset/2.0f, -kJPSThumbnailAnnotationViewVerticalOffset);
+    [UIView animateWithDuration:kJPSThumbnailAnnotationViewAnimationDuration/2.0f delay:kJPSThumbnailAnnotationViewAnimationDuration options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [self setDetailGroupAlpha:1.0f];
     } completion:^(BOOL finished) {
-        _state = JPSThumbnailAnnotationViewStateExpanded;
+        self.state = JPSThumbnailAnnotationViewStateExpanded;
     }];
 }
 
 - (void)shrink {
-    if (_state != JPSThumbnailAnnotationViewStateExpanded) return;
-    _state = JPSThumbnailAnnotationViewStateAnimating;
+    if (self.state != JPSThumbnailAnnotationViewStateExpanded) return;
+    
+    self.state = JPSThumbnailAnnotationViewStateAnimating;
 
-    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width-JPSThumbnailAnnotationViewExpandOffset, self.frame.size.height);
-    [UIView animateWithDuration:JPSThumbnailAnnotationViewAnimationDuration/2 delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        _disclosureButton.alpha = 0;
-        _titleLabel.alpha = 0;
-        _subtitleLabel.alpha = 0;
-    } completion:^(BOOL finished) {
-        [self animateBubbleWithDirection:JPSThumbnailAnnotationViewAnimationDirectionShrink];
-        self.centerOffset = CGPointMake(0, -JPSThumbnailAnnotationViewVerticalOffset);
-    }];
+    self.frame = CGRectMake(self.frame.origin.x,
+                            self.frame.origin.y,
+                            self.frame.size.width - kJPSThumbnailAnnotationViewExpandOffset,
+                            self.frame.size.height);
+    
+    [UIView animateWithDuration:kJPSThumbnailAnnotationViewAnimationDuration/2.0f
+                          delay:0.0f
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         [self setDetailGroupAlpha:0.0f];
+                     }
+                     completion:^(BOOL finished) {
+                         [self animateBubbleWithDirection:JPSThumbnailAnnotationViewAnimationDirectionShrink];
+                         self.centerOffset = CGPointMake(0.0f, -kJPSThumbnailAnnotationViewVerticalOffset);
+                     }];
 }
 
 - (void)animateBubbleWithDirection:(JPSThumbnailAnnotationViewAnimationDirection)animationDirection {
+    BOOL growing = (animationDirection == JPSThumbnailAnnotationViewAnimationDirectionGrow);
     // Image
-    [UIView animateWithDuration:JPSThumbnailAnnotationViewAnimationDuration animations:^{
-        if (animationDirection == JPSThumbnailAnnotationViewAnimationDirectionGrow) {
-            _imageView.frame = CGRectMake(_imageView.frame.origin.x-JPSThumbnailAnnotationViewExpandOffset/2, _imageView.frame.origin.y, _imageView.frame.size.width, _imageView.frame.size.height);
-        } else if (animationDirection == JPSThumbnailAnnotationViewAnimationDirectionShrink) {
-            _imageView.frame = CGRectMake(_imageView.frame.origin.x+JPSThumbnailAnnotationViewExpandOffset/2, _imageView.frame.origin.y, _imageView.frame.size.width, _imageView.frame.size.height);
-        }
+    [UIView animateWithDuration:kJPSThumbnailAnnotationViewAnimationDuration animations:^{
+        CGFloat xOffset = (growing ? -1 : 1) * kJPSThumbnailAnnotationViewExpandOffset/2.0f;
+        self.imageView.frame = CGRectOffset(self.imageView.frame, xOffset, 0.0f);
     } completion:^(BOOL finished) {
         if (animationDirection == JPSThumbnailAnnotationViewAnimationDirectionShrink) {
-            _state = JPSThumbnailAnnotationViewStateCollapsed;
+            self.state = JPSThumbnailAnnotationViewStateCollapsed;
         }
     }];
     
     // Bubble
-    CGRect largeRect = CGRectMake(self.bounds.origin.x-JPSThumbnailAnnotationViewExpandOffset/2, self.bounds.origin.y, self.bounds.size.width+JPSThumbnailAnnotationViewExpandOffset, self.bounds.size.height);
-    CGRect standardRect = CGRectMake(self.bounds.origin.x, self.bounds.origin.y, self.bounds.size.width, self.bounds.size.height);
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"path"];
     
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     animation.repeatCount = 1;
     animation.removedOnCompletion = NO;
     animation.fillMode = kCAFillModeForwards;
-    animation.duration = JPSThumbnailAnnotationViewAnimationDuration;
+    animation.duration = kJPSThumbnailAnnotationViewAnimationDuration;
     
     // Stroke & Shadow From/To Values
-    CGPathRef fromPath = (animationDirection == JPSThumbnailAnnotationViewAnimationDirectionGrow) ? [self newBubbleWithRect:standardRect] : [self newBubbleWithRect:largeRect];
+    CGRect largeRect = CGRectInset(self.bounds, -kJPSThumbnailAnnotationViewExpandOffset/2.0f, 0.0f);
+    
+    CGPathRef fromPath = [self newBubbleWithRect:growing ? self.bounds : largeRect];
     animation.fromValue = (__bridge id)fromPath;
     CGPathRelease(fromPath);
     
-    CGPathRef toPath = (animationDirection == JPSThumbnailAnnotationViewAnimationDirectionGrow) ? [self newBubbleWithRect:largeRect] : [self newBubbleWithRect:standardRect];
+    CGPathRef toPath = [self newBubbleWithRect:growing ? largeRect : self.bounds];
     animation.toValue = (__bridge id)toPath;
     CGPathRelease(toPath);
     
-    [_strokeAndShadowLayer addAnimation:animation forKey:animation.keyPath];
+    [self.bgLayer addAnimation:animation forKey:animation.keyPath];
+}
+
+#pragma mark - Disclosure Button
+
+- (void)didTapDisclosureButton {
+    if (self.disclosureBlock) self.disclosureBlock();
+}
+
++ (UIImage *)disclosureButtonImage {
+    CGSize size = CGSizeMake(21.0f, 36.0f);
+    UIGraphicsBeginImageContextWithOptions(size, NO, [[UIScreen mainScreen] scale]);
     
-    // ShapeLayer From/To Values
-    fromPath = (animationDirection == JPSThumbnailAnnotationViewAnimationDirectionGrow) ?
-    [self newBubbleWithRect:standardRect andOffset:CGSizeMake(JPSThumbnailAnnotationViewExpandOffset/2, 0)] : [self newBubbleWithRect:largeRect andOffset:CGSizeMake(JPSThumbnailAnnotationViewExpandOffset/2, 0)];
-    animation.fromValue = (__bridge id)fromPath;
-    CGPathRelease(fromPath);
+    UIBezierPath *bezierPath = [UIBezierPath bezierPath];
+    [bezierPath moveToPoint:CGPointMake(2.0f, 2.0f)];
+    [bezierPath addLineToPoint:CGPointMake(10.0f, 10.0f)];
+    [bezierPath addLineToPoint:CGPointMake(2.0f, 18.0f)];
+    [[UIColor lightGrayColor] setStroke];
+    bezierPath.lineWidth = 3.0f;
+    [bezierPath stroke];
     
-    toPath = (animationDirection == JPSThumbnailAnnotationViewAnimationDirectionGrow) ? [self newBubbleWithRect:largeRect andOffset:CGSizeMake(JPSThumbnailAnnotationViewExpandOffset/2, 0)] : [self newBubbleWithRect:standardRect andOffset:CGSizeMake(JPSThumbnailAnnotationViewExpandOffset/2, 0)];
-    animation.toValue = (__bridge id)toPath;
-    CGPathRelease(toPath);
-    [_shapeLayer addAnimation:animation forKey:animation.keyPath];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
 }
 
 @end

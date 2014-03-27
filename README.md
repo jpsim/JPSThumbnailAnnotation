@@ -1,8 +1,8 @@
 # JPSThumbnailAnnotation
 
-JPSThumbnailAnnotation is a simple mapkit annotation view for displaying images with clean design and animations. It is 100% programmatically drawn.
+JPSThumbnailAnnotation is a simple mapkit annotation view for displaying images with clean design and animations. It is 100% programmatically drawn and styled for iOS 7.
 
-![JPSThumbnailAnnotation in action](screenshots.jpg)
+![JPSThumbnailAnnotation in action](screenshots2.jpg)
 
 ## Installation
 
@@ -25,12 +25,10 @@ JPSThumbnail *thumbnail = [[JPSThumbnail alloc] init];
 thumbnail.image = [UIImage imageNamed:@"empire.jpg"];
 thumbnail.title = @"Empire State Building";
 thumbnail.subtitle = @"NYC Landmark";
-thumbnail.coordinate = CLLocationCoordinate2DMake(40.75, -73.99);
+thumbnail.coordinate = CLLocationCoordinate2DMake(40.75f, -73.99f);
 thumbnail.disclosureBlock = ^{ NSLog(@"selected Empire"); };
 
-JPSThumbnailAnnotation *annotation = [[JPSThumbnailAnnotation alloc] initWithThumbnail:thumbnail];
-
-[mapView addAnnotation:annotation];
+[mapView addAnnotation:[JPSThumbnailAnnotation annotationWithThumbnail:thumbnail]];
 ```
 
 ### Usage notes
@@ -60,4 +58,4 @@ Make sure the mapView implements the following 3 MKMapViewDelegate methods:
 
 ## License
 
-This project is under the MIT license.
+MIT Licensed.

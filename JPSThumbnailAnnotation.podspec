@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'JPSThumbnailAnnotation'
-  s.version  = '0.0.2'
+  s.version  = '1.0.0'
   s.platform = :ios
   s.license  = 'MIT'
   s.summary  = 'A simple mapkit annotation for displaying images and details.'

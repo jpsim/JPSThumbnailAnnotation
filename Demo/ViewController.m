@@ -6,8 +6,13 @@
 //  Copyright (c) 2013 JP Simard. All rights reserved.
 //
 
+@import MapKit;
 #import "ViewController.h"
 #import "JPSThumbnailAnnotation.h"
+
+@interface ViewController () <MKMapViewDelegate>
+
+@end
 
 @implementation ViewController
 
@@ -21,43 +26,37 @@
     [self.view addSubview:mapView];
     
     // Annotations
-    [mapView addAnnotations:[self generateAnnotations]];
+    [mapView addAnnotations:[self annotations]];
 }
 
-- (NSArray *)generateAnnotations {
-    NSMutableArray *annotations = [[NSMutableArray alloc] initWithCapacity:3];
-    
+- (NSArray *)annotations {
     // Empire State Building
     JPSThumbnail *empire = [[JPSThumbnail alloc] init];
     empire.image = [UIImage imageNamed:@"empire.jpg"];
     empire.title = @"Empire State Building";
     empire.subtitle = @"NYC Landmark";
-    empire.coordinate = CLLocationCoordinate2DMake(40.75, -73.99);
+    empire.coordinate = CLLocationCoordinate2DMake(40.75f, -73.99f);
     empire.disclosureBlock = ^{ NSLog(@"selected Empire"); };
-    
-    [annotations addObject:[[JPSThumbnailAnnotation alloc] initWithThumbnail:empire]];
     
     // Apple HQ
     JPSThumbnail *apple = [[JPSThumbnail alloc] init];
     apple.image = [UIImage imageNamed:@"apple.jpg"];
     apple.title = @"Apple HQ";
     apple.subtitle = @"Apple Headquarters";
-    apple.coordinate = CLLocationCoordinate2DMake(37.33, -122.03);
+    apple.coordinate = CLLocationCoordinate2DMake(37.33f, -122.03f);
     apple.disclosureBlock = ^{ NSLog(@"selected Appple"); };
-    
-    [annotations addObject:[[JPSThumbnailAnnotation alloc] initWithThumbnail:apple]];
     
     // Parliament of Canada
     JPSThumbnail *ottawa = [[JPSThumbnail alloc] init];
     ottawa.image = [UIImage imageNamed:@"ottawa.jpg"];
     ottawa.title = @"Parliament of Canada";
     ottawa.subtitle = @"Oh Canada!";
-    ottawa.coordinate = CLLocationCoordinate2DMake(45.43, -75.70);
+    ottawa.coordinate = CLLocationCoordinate2DMake(45.43f, -75.70f);
     ottawa.disclosureBlock = ^{ NSLog(@"selected Ottawa"); };
     
-    [annotations addObject:[[JPSThumbnailAnnotation alloc] initWithThumbnail:ottawa]];
-    
-    return annotations;
+    return @[[JPSThumbnailAnnotation annotationWithThumbnail:empire],
+             [JPSThumbnailAnnotation annotationWithThumbnail:apple],
+             [JPSThumbnailAnnotation annotationWithThumbnail:ottawa]];
 }
 
 #pragma mark - MKMapViewDelegate

@@ -6,20 +6,22 @@
 //  Copyright (c) 2013 JP Simard. All rights reserved.
 //
 
-#import <MapKit/MapKit.h>
-#import <QuartzCore/QuartzCore.h>
-#import "JPSThumbnail.h"
+@import MapKit;
 
-typedef enum {
+@class JPSThumbnail;
+
+extern NSString * const kJPSThumbnailAnnotationViewReuseID;
+
+typedef NS_ENUM(NSInteger, JPSThumbnailAnnotationViewAnimationDirection) {
     JPSThumbnailAnnotationViewAnimationDirectionGrow,
     JPSThumbnailAnnotationViewAnimationDirectionShrink,
-} JPSThumbnailAnnotationViewAnimationDirection;
+};
 
-typedef enum {
+typedef NS_ENUM(NSInteger, JPSThumbnailAnnotationViewState) {
     JPSThumbnailAnnotationViewStateCollapsed,
     JPSThumbnailAnnotationViewStateExpanded,
     JPSThumbnailAnnotationViewStateAnimating,
-} JPSThumbnailAnnotationViewState;
+};
 
 @protocol JPSThumbnailAnnotationViewProtocol <NSObject>
 
@@ -28,19 +30,10 @@ typedef enum {
 
 @end
 
-@interface JPSThumbnailAnnotationView : MKAnnotationView <JPSThumbnailAnnotationViewProtocol> {
-    CAShapeLayer *_shapeLayer;
-    CAShapeLayer *_strokeAndShadowLayer;
-    UIButton *_disclosureButton;
-    JPSThumbnailAnnotationViewState _state;
-}
-
-@property (nonatomic, readwrite) CLLocationCoordinate2D coordinate;
-@property (nonatomic, strong) UIImageView *imageView;
-@property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) UILabel *subtitleLabel;
-@property (nonatomic, strong) ActionBlock disclosureBlock;
+@interface JPSThumbnailAnnotationView : MKAnnotationView <JPSThumbnailAnnotationViewProtocol>
 
 - (id)initWithAnnotation:(id<MKAnnotation>)annotation;
+
+- (void)updateWithThumbnail:(JPSThumbnail *)thumbnail;
 
 @end
