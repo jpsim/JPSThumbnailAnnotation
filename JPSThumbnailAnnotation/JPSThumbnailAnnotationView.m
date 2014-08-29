@@ -9,6 +9,7 @@
 @import QuartzCore;
 #import "JPSThumbnailAnnotationView.h"
 #import "JPSThumbnail.h"
+#import "UIImageView+UIActivityIndicatorForSDWebImage.h"
 
 NSString * const kJPSThumbnailAnnotationViewReuseID = @"JPSThumbnailAnnotationView";
 
@@ -126,8 +127,21 @@ static CGFloat const kJPSThumbnailAnnotationViewAnimationDuration = 0.25f;
     self.coordinate = thumbnail.coordinate;
     self.titleLabel.text = thumbnail.title;
     self.subtitleLabel.text = thumbnail.subtitle;
-    self.imageView.image = thumbnail.image;
+    [self assignImageWithThumbnail:thumbnail];
     self.disclosureBlock = thumbnail.disclosureBlock;
+}
+
+-(void)assignImageWithThumbnail:(JPSThumbnail *)thumbnail {
+    
+    //figure out if we Should directly set image or use URL to download it instead
+    if (thumbnail.image) {
+        self.imageView.image = thumbnail.image;
+
+    }else if(thumbnail.imageURL){
+        
+        [self.imageView setImageWithURL:thumbnail.imageURL placeholderImage:nil usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    }
+
 }
 
 #pragma mark - JPSThumbnailAnnotationViewProtocol
