@@ -54,9 +54,18 @@
     ottawa.coordinate = CLLocationCoordinate2DMake(45.43f, -75.70f);
     ottawa.disclosureBlock = ^{ NSLog(@"selected Ottawa"); };
     
+    // Central Park -- (Web image Example by using imageURL parameter)
+    JPSThumbnail *cPark = [[JPSThumbnail alloc] init];
+    cPark.imageURL = [NSURL URLWithString:@"http://insidenanabreadshead.files.wordpress.com/2011/01/ynp-yellowstone-entry-sign.jpg"];
+    cPark.title = @"Yellowstone National Park";
+    cPark.subtitle = @"Wonders of Nature";
+    cPark.coordinate = CLLocationCoordinate2DMake(44.427844f, -110.588519f);
+    cPark.disclosureBlock = ^{ NSLog(@"selected Yellowstone Park"); };
+    
     return @[[JPSThumbnailAnnotation annotationWithThumbnail:empire],
              [JPSThumbnailAnnotation annotationWithThumbnail:apple],
-             [JPSThumbnailAnnotation annotationWithThumbnail:ottawa]];
+             [JPSThumbnailAnnotation annotationWithThumbnail:ottawa],
+             [JPSThumbnailAnnotation annotationWithThumbnail:cPark]];
 }
 
 #pragma mark - MKMapViewDelegate

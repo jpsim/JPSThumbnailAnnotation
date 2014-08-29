@@ -12,5 +12,9 @@ Pod::Spec.new do |s|
 
   s.source_files = 'JPSThumbnailAnnotation/*.{h,m}'
   s.frameworks   = 'QuartzCore', 'MapKit', 'CoreLocation'
+
+  #specifying dependencies for Web image Downloads
+  s.dependency 'UIActivityIndicator-for-SDWebImage', '~> 1.2'
+
   s.requires_arc = true
 end
