@@ -1,6 +1,6 @@
 # JPSThumbnailAnnotation
 
-JPSThumbnailAnnotation is a simple mapkit annotation view for displaying images with clean design and animations. It is 100% programmatically drawn and styled for iOS 7.
+JPSThumbnailAnnotation is a simple mapkit annotation view for displaying images with clean design and animations. It is 100% programmatically drawn and styled for iOS 7. It supports both local and Web images.
 
 ![JPSThumbnailAnnotation in action](screenshots2.jpg)
 
@@ -31,6 +31,18 @@ thumbnail.disclosureBlock = ^{ NSLog(@"selected Empire"); };
 [mapView addAnnotation:[JPSThumbnailAnnotation annotationWithThumbnail:thumbnail]];
 ```
 
+Additionally, you can display Web images, by simply leaving the image property set to nil when creating the JPSThumbnail instances, and providing an imageURL instead.
+
+``` objc
+// Central Park -- (Web image Example by using imageURL parameter)
+    JPSThumbnail *cPark = [[JPSThumbnail alloc] init];
+    cPark.imageURL = [NSURL URLWithString:@"http://insidenanabreadshead.files.wordpress.com/2011/01/ynp-yellowstone-entry-sign.jpg"];
+    cPark.title = @"Yellowstone National Park";
+    cPark.subtitle = @"Wonders of Nature";
+    cPark.coordinate = CLLocationCoordinate2DMake(44.427844f, -110.588519f);
+    cPark.disclosureBlock = ^{ NSLog(@"selected Yellowstone Park"); };
+```
+
 ### Usage notes
 
 Make sure the mapView implements the following 3 MKMapViewDelegate methods:
@@ -55,6 +67,10 @@ Make sure the mapView implements the following 3 MKMapViewDelegate methods:
     return nil;
 }
 ```
+
+### Dependencies
+This class uses SDWebImage by means of the popular category "UIImageView+UIActivityIndicatorForSDWebImage.h" to allow Web image downloads
+ 
 
 ## License
 
