@@ -14,8 +14,7 @@ Pod::Spec.new do |s|
   s.frameworks   = 'QuartzCore', 'MapKit', 'CoreLocation'
 
   #specifying dependencies for Web image Downloads
-  s.dependency 'SDWebImage', '~>3.5.2'
-  s.dependency 'UIActivityIndicator-for-SDWebImage', '~> 1.0.3'
+  s.dependency 'UIActivityIndicator-for-SDWebImage', '~> 1.2'
 
   s.requires_arc = true
 end

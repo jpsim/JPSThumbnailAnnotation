@@ -1,0 +1,48 @@
+PODS:
+  - libwebp (0.4.1):
+    - libwebp/dec
+    - libwebp/demux
+    - libwebp/dsp
+    - libwebp/enc
+    - libwebp/mux
+    - libwebp/utils
+    - libwebp/webp
+  - libwebp/dec (0.4.1):
+    - libwebp/enc
+    - libwebp/utils
+  - libwebp/demux (0.4.1):
+    - libwebp/utils
+  - libwebp/dsp (0.4.1):
+    - libwebp/dec
+    - libwebp/enc
+    - libwebp/utils
+  - libwebp/enc (0.4.1):
+    - libwebp/utils
+  - libwebp/mux (0.4.1):
+    - libwebp/utils
+  - libwebp/utils (0.4.1):
+    - libwebp/dsp
+    - libwebp/webp
+  - libwebp/webp (0.4.1)
+  - SDWebImage (3.7.1):
+    - SDWebImage/Core
+    - SDWebImage/MapKit
+    - SDWebImage/WebP
+  - SDWebImage/Core (3.7.1)
+  - SDWebImage/MapKit (3.7.1):
+    - SDWebImage/Core
+  - SDWebImage/WebP (3.7.1):
+    - libwebp
+    - SDWebImage/Core
+  - UIActivityIndicator-for-SDWebImage (1.2):
+    - SDWebImage (~> 3.7)
+
+DEPENDENCIES:
+  - UIActivityIndicator-for-SDWebImage (~> 1.2)
+
+SPEC CHECKSUMS:
+  libwebp: 88e6e172a01df354b0a78400d2e5b87a9f2796cb
+  SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
+  UIActivityIndicator-for-SDWebImage: 8bd92c15280fbe54816448c6b14674145eee05c7
+
+COCOAPODS: 0.32.1
