@@ -6,7 +6,8 @@
 //  Copyright (c) 2013 JP Simard. All rights reserved.
 //
 
-@import MapKit;
+#import <MapKit/MapKit.h>
+//@import MapKit;
 
 @class JPSThumbnail;
 

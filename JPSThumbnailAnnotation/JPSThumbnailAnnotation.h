@@ -6,8 +6,11 @@
 //  Copyright (c) 2013 JP Simard. All rights reserved.
 //
 
-@import Foundation;
-@import MapKit;
+#import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
+//removing Modules imports from headers
+//@import Foundation;
+//@import MapKit;
 #import "JPSThumbnail.h"
 #import "JPSThumbnailAnnotationView.h"
 
