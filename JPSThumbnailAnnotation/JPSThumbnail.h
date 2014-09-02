@@ -7,9 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <MapKit/MapKit.h>
-//removing Modules imports from headers
-//@import MapKit;
+@import MapKit;
 
 typedef void (^ActionBlock)();
 
