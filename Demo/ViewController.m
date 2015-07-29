@@ -27,24 +27,6 @@
     
     // Annotations
     [mapView addAnnotations:[self annotations]];
-    
-    // After 2 seconds, programmitcally expand the first annotation in the map
-    // After 2 more seconds, programmtically shirnk that annotation
-    double delayInSeconds = 2.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        JPSThumbnailAnnotation *firstAnnotation = mapView.annotations[0];
-        JPSThumbnailAnnotationView *annotationView = (JPSThumbnailAnnotationView *)[firstAnnotation annotationViewInMap:mapView];
-        [annotationView expand];
-        
-        dispatch_time_t shrinkTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-        dispatch_after(shrinkTime, dispatch_get_main_queue(), ^(void){
-            [annotationView shrink];
-        });
-    });
-    
- 
-    
 }
 
 - (NSArray *)annotations {
