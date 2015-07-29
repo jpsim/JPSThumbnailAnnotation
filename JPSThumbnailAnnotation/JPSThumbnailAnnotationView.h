@@ -36,4 +36,7 @@ typedef NS_ENUM(NSInteger, JPSThumbnailAnnotationViewState) {
 
 - (void)updateWithThumbnail:(JPSThumbnail *)thumbnail;
 
+// Programmatically expand the annotation
+- (void)expand;
+
 @end
