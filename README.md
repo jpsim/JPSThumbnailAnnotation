@@ -1,6 +1,6 @@
 # JPSThumbnailAnnotation
 
-JPSThumbnailAnnotation is a simple mapkit annotation view for displaying images with clean design and animations. It is 100% programmatically drawn and styled for iOS 7.
+JPSThumbnailAnnotation is a simple mapkit annotation view for displaying images with clean design and animations. It is 100% programmatically drawn and styled for iOS 8, now including loading image from urls asyncronously.
 
 ![JPSThumbnailAnnotation in action](screenshots2.jpg)
 
@@ -9,10 +9,6 @@ JPSThumbnailAnnotation is a simple mapkit annotation view for displaying images 
 ### From CocoaPods
 
 Add `pod 'JPSThumbnailAnnotation'` to your Podfile.
-
-### Manually
-
-Copy the `JPSThumbnailAnnotation` folder to your Xcode project and link the `MapKit`, `QuartzCore` and `CoreLocation` libraries.
 
 ## Usage
 
@@ -23,6 +19,10 @@ You add an `JPSThumbnailAnnotation` just like any other `MKAnnotation`. The anno
 ``` objc
 JPSThumbnail *thumbnail = [[JPSThumbnail alloc] init];
 thumbnail.image = [UIImage imageNamed:@"empire.jpg"];
+
+// If imgUrl is defined, the image will be loaded asyncronously from URL
+thumbnail.imgUrl = @"https://www.imageUrlExampleDomain.com/exampleImageName.png";
+
 thumbnail.title = @"Empire State Building";
 thumbnail.subtitle = @"NYC Landmark";
 thumbnail.coordinate = CLLocationCoordinate2DMake(40.75f, -73.99f);
