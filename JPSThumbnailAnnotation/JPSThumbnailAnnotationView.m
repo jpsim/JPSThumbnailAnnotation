@@ -126,7 +126,12 @@ static CGFloat const kJPSThumbnailAnnotationViewAnimationDuration = 0.25f;
     self.coordinate = thumbnail.coordinate;
     self.titleLabel.text = thumbnail.title;
     self.subtitleLabel.text = thumbnail.subtitle;
-    self.imageView.image = thumbnail.image;
+    if(thumbnail.imgUrl){
+        [self.imageView setImageWithURL:[NSURL URLWithString:thumbnail.imgUrl]];
+    }
+    else{
+        self.imageView.image = thumbnail.image;
+    }
     self.disclosureBlock = thumbnail.disclosureBlock;
 }
 
