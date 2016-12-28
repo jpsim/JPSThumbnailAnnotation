@@ -187,8 +187,7 @@ static CGFloat const kJPSThumbnailAnnotationViewAnimationDuration = 0.25f;
     self.state = JPSThumbnailAnnotationViewStateAnimating;
     
     [self animateBubbleWithDirection:JPSThumbnailAnnotationViewAnimationDirectionGrow];
-    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width+kJPSThumbnailAnnotationViewExpandOffset, self.frame.size.height);
-    self.centerOffset = CGPointMake(kJPSThumbnailAnnotationViewExpandOffset/2.0f, -kJPSThumbnailAnnotationViewVerticalOffset);
+    self.bounds = CGRectMake(self.bounds.origin.x-kJPSThumbnailAnnotationViewExpandOffset/2, self.bounds.origin.y, self.bounds.size.width+kJPSThumbnailAnnotationViewExpandOffset, self.bounds.size.height);
     [UIView animateWithDuration:kJPSThumbnailAnnotationViewAnimationDuration/2.0f delay:kJPSThumbnailAnnotationViewAnimationDuration options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self setDetailGroupAlpha:1.0f];
     } completion:^(BOOL finished) {
@@ -201,10 +200,10 @@ static CGFloat const kJPSThumbnailAnnotationViewAnimationDuration = 0.25f;
     
     self.state = JPSThumbnailAnnotationViewStateAnimating;
 
-    self.frame = CGRectMake(self.frame.origin.x,
-                            self.frame.origin.y,
-                            self.frame.size.width - kJPSThumbnailAnnotationViewExpandOffset,
-                            self.frame.size.height);
+    self.bounds = CGRectMake(self.bounds.origin.x + kJPSThumbnailAnnotationViewExpandOffset/2,
+                            self.bounds.origin.y,
+                            self.bounds.size.width - kJPSThumbnailAnnotationViewExpandOffset,
+                            self.bounds.size.height);
     
     [UIView animateWithDuration:kJPSThumbnailAnnotationViewAnimationDuration/2.0f
                           delay:0.0f
