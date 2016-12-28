@@ -8,7 +8,6 @@
 
 @import Foundation;
 @import MapKit;
-#import <SDWebImage/UIImageView+WebCache.h>
 #import "JPSThumbnail.h"
 #import "JPSThumbnailAnnotationView.h"
 

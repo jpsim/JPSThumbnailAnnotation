@@ -54,9 +54,20 @@
     ottawa.coordinate = CLLocationCoordinate2DMake(45.43f, -75.70f);
     ottawa.disclosureBlock = ^{ NSLog(@"selected Ottawa"); };
     
+    // Sagrada Familia
+    JPSThumbnail *barcelona = [[JPSThumbnail alloc] init];
+//    ottawa.image = [UIImage imageNamed:@"ottawa.jpg"];
+    //exampleURL
+    barcelona.imgUrl = @"https://www.shbarcelona.es/blog/es/wp-content/uploads/2015/10/gaudi-en-barcelona-3-768x741.jpg";
+    barcelona.title = @"BCN Sagrada Familia";
+    barcelona.subtitle = @"By Gaudi!";
+    barcelona.coordinate = CLLocationCoordinate2DMake(41.4036f, 2.1744f);
+    barcelona.disclosureBlock = ^{ NSLog(@"selected Barcelona"); };
+    
     return @[[JPSThumbnailAnnotation annotationWithThumbnail:empire],
              [JPSThumbnailAnnotation annotationWithThumbnail:apple],
-             [JPSThumbnailAnnotation annotationWithThumbnail:ottawa]];
+             [JPSThumbnailAnnotation annotationWithThumbnail:ottawa],
+             [JPSThumbnailAnnotation annotationWithThumbnail:barcelona]];
 }
 
 #pragma mark - MKMapViewDelegate

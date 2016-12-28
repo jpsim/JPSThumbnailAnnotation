@@ -7,6 +7,7 @@
 //
 
 @import QuartzCore;
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "JPSThumbnailAnnotationView.h"
 #import "JPSThumbnail.h"
 
@@ -127,7 +128,14 @@ static CGFloat const kJPSThumbnailAnnotationViewAnimationDuration = 0.25f;
     self.titleLabel.text = thumbnail.title;
     self.subtitleLabel.text = thumbnail.subtitle;
     if(thumbnail.imgUrl){
-        [self.imageView setImageWithURL:[NSURL URLWithString:thumbnail.imgUrl]];
+        [self.imageView setIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [self.imageView setShowActivityIndicatorView:YES];
+        [self.imageView sd_setImageWithURL:[NSURL URLWithString:thumbnail.imgUrl]
+                          placeholderImage:thumbnail.image
+                                   options:SDWebImageAllowInvalidSSLCertificates
+                                 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                     [self.imageView setShowActivityIndicatorView:NO];
+                                 }];
     }
     else{
         self.imageView.image = thumbnail.image;

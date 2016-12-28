@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		343271801E14418A00CC3770 /* JPSThumbnail.m in Sources */ = {isa = PBXBuildFile; fileRef = 3432717F1E14418A00CC3770 /* JPSThumbnail.m */; };
+		CD64B5405E9DF8CC7DE05572 /* libPods-JPSThumbnailAnnotation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3304F5AA4CACC96A19D9D26B /* libPods-JPSThumbnailAnnotation.a */; };
 		E875D68A17245D6C00009A6F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E875D68917245D6C00009A6F /* Foundation.framework */; };
 		E875D69217245D6C00009A6F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E875D69017245D6C00009A6F /* InfoPlist.strings */; };
 		E875D69417245D6C00009A6F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E875D69317245D6C00009A6F /* main.m */; };
@@ -16,15 +16,15 @@
 		E875D69C17245D6C00009A6F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E875D69B17245D6C00009A6F /* Default@2x.png */; };
 		E875D69E17245D6C00009A6F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E875D69D17245D6C00009A6F /* Default-568h@2x.png */; };
 		E875D6A117245D6C00009A6F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E875D6A017245D6C00009A6F /* ViewController.m */; };
-		E8B7E7D91724669200E93E96 /* JPSThumbnailAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B7E7D81724669200E93E96 /* JPSThumbnailAnnotation.m */; };
-		E8B7E7DC172466B600E93E96 /* JPSThumbnailAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B7E7DB172466B600E93E96 /* JPSThumbnailAnnotationView.m */; };
 		E8EF4F2C1725027D0051DB36 /* empire.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E8EF4F2B1725027D0051DB36 /* empire.jpg */; };
 		E8EF4F2F1725081E0051DB36 /* ottawa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E8EF4F2D1725081E0051DB36 /* ottawa.jpg */; };
 		E8EF4F301725081E0051DB36 /* apple.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E8EF4F2E1725081E0051DB36 /* apple.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3432717F1E14418A00CC3770 /* JPSThumbnail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPSThumbnail.m; sourceTree = "<group>"; };
+		3304F5AA4CACC96A19D9D26B /* libPods-JPSThumbnailAnnotation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JPSThumbnailAnnotation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		42892F587C56C007C4FCAE98 /* Pods-JPSThumbnailAnnotation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JPSThumbnailAnnotation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JPSThumbnailAnnotation/Pods-JPSThumbnailAnnotation.debug.xcconfig"; sourceTree = "<group>"; };
+		529381FC94202F7B8931CF2A /* Pods-JPSThumbnailAnnotation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JPSThumbnailAnnotation.release.xcconfig"; path = "Pods/Target Support Files/Pods-JPSThumbnailAnnotation/Pods-JPSThumbnailAnnotation.release.xcconfig"; sourceTree = "<group>"; };
 		E875D68417245D6C00009A6F /* JPSThumbnailAnnotation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JPSThumbnailAnnotation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E875D68717245D6C00009A6F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E875D68917245D6C00009A6F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -41,13 +41,8 @@
 		E875D69F17245D6C00009A6F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		E875D6A017245D6C00009A6F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E875D6AA172461FB00009A6F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		E8B7E7D71724669200E93E96 /* JPSThumbnailAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPSThumbnailAnnotation.h; sourceTree = "<group>"; };
-		E8B7E7D81724669200E93E96 /* JPSThumbnailAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPSThumbnailAnnotation.m; sourceTree = "<group>"; };
-		E8B7E7DA172466B600E93E96 /* JPSThumbnailAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPSThumbnailAnnotationView.h; sourceTree = "<group>"; };
-		E8B7E7DB172466B600E93E96 /* JPSThumbnailAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPSThumbnailAnnotationView.m; sourceTree = "<group>"; };
 		E8EF4F241724E30C0051DB36 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E8EF4F261724E5870051DB36 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		E8EF4F281724EE840051DB36 /* JPSThumbnail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPSThumbnail.h; sourceTree = "<group>"; };
 		E8EF4F2B1725027D0051DB36 /* empire.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = empire.jpg; sourceTree = "<group>"; };
 		E8EF4F2D1725081E0051DB36 /* ottawa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ottawa.jpg; sourceTree = "<group>"; };
 		E8EF4F2E1725081E0051DB36 /* apple.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = apple.jpg; sourceTree = "<group>"; };
@@ -59,6 +54,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E875D68A17245D6C00009A6F /* Foundation.framework in Frameworks */,
+				CD64B5405E9DF8CC7DE05572 /* libPods-JPSThumbnailAnnotation.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,10 +64,10 @@
 		E875D67B17245D6C00009A6F = {
 			isa = PBXGroup;
 			children = (
-				E8B7E7D61724664A00E93E96 /* JPSThumbnailAnnotation */,
 				E875D68D17245D6C00009A6F /* Classes */,
 				E875D68617245D6C00009A6F /* Frameworks */,
 				E875D68517245D6C00009A6F /* Products */,
+				EE3C41C183D31C67E058A2A6 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,6 +88,7 @@
 				E875D68717245D6C00009A6F /* UIKit.framework */,
 				E875D68917245D6C00009A6F /* Foundation.framework */,
 				E875D68B17245D6C00009A6F /* CoreGraphics.framework */,
+				3304F5AA4CACC96A19D9D26B /* libPods-JPSThumbnailAnnotation.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -125,18 +122,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		E8B7E7D61724664A00E93E96 /* JPSThumbnailAnnotation */ = {
+		EE3C41C183D31C67E058A2A6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3432717F1E14418A00CC3770 /* JPSThumbnail.m */,
-				E8B7E7D71724669200E93E96 /* JPSThumbnailAnnotation.h */,
-				E8B7E7D81724669200E93E96 /* JPSThumbnailAnnotation.m */,
-				E8B7E7DA172466B600E93E96 /* JPSThumbnailAnnotationView.h */,
-				E8B7E7DB172466B600E93E96 /* JPSThumbnailAnnotationView.m */,
-				E8EF4F281724EE840051DB36 /* JPSThumbnail.h */,
+				42892F587C56C007C4FCAE98 /* Pods-JPSThumbnailAnnotation.debug.xcconfig */,
+				529381FC94202F7B8931CF2A /* Pods-JPSThumbnailAnnotation.release.xcconfig */,
 			);
-			name = JPSThumbnailAnnotation;
-			path = ../JPSThumbnailAnnotation;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,9 +138,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E875D6A717245D6C00009A6F /* Build configuration list for PBXNativeTarget "JPSThumbnailAnnotation" */;
 			buildPhases = (
+				E3A8E8A833B26CA0A3DC641C /* [CP] Check Pods Manifest.lock */,
 				E875D68017245D6C00009A6F /* Sources */,
 				E875D68117245D6C00009A6F /* Frameworks */,
 				E875D68217245D6C00009A6F /* Resources */,
+				2EFDD5CC701D3DF48877234E /* [CP] Embed Pods Frameworks */,
+				FE995438CEC4F597AEC81F34 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -166,7 +161,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = JPS;
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "JP Simard";
 			};
 			buildConfigurationList = E875D67F17245D6C00009A6F /* Build configuration list for PBXProject "JPSThumbnailAnnotation" */;
@@ -203,6 +198,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2EFDD5CC701D3DF48877234E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JPSThumbnailAnnotation/Pods-JPSThumbnailAnnotation-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3A8E8A833B26CA0A3DC641C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FE995438CEC4F597AEC81F34 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JPSThumbnailAnnotation/Pods-JPSThumbnailAnnotation-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E875D68017245D6C00009A6F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -211,9 +254,6 @@
 				E875D69417245D6C00009A6F /* main.m in Sources */,
 				E875D69817245D6C00009A6F /* AppDelegate.m in Sources */,
 				E875D6A117245D6C00009A6F /* ViewController.m in Sources */,
-				343271801E14418A00CC3770 /* JPSThumbnail.m in Sources */,
-				E8B7E7D91724669200E93E96 /* JPSThumbnailAnnotation.m in Sources */,
-				E8B7E7DC172466B600E93E96 /* JPSThumbnailAnnotationView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,25 +278,35 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -269,18 +319,27 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -289,11 +348,13 @@
 		};
 		E875D6A817245D6C00009A6F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42892F587C56C007C4FCAE98 /* Pods-JPSThumbnailAnnotation.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JPSThumbnailAnnotation-Prefix.pch";
 				INFOPLIST_FILE = "JPSThumbnailAnnotation-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yourcompany.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = JPSThumbnailAnnotation;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -302,11 +363,13 @@
 		};
 		E875D6A917245D6C00009A6F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 529381FC94202F7B8931CF2A /* Pods-JPSThumbnailAnnotation.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JPSThumbnailAnnotation-Prefix.pch";
 				INFOPLIST_FILE = "JPSThumbnailAnnotation-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yourcompany.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = JPSThumbnailAnnotation;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;

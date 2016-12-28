@@ -1,0 +1,21 @@
+PODS:
+  - JPSThumbnailAnnotation (1.0.1):
+    - SDWebImage
+  - SDWebImage (3.7.6):
+    - SDWebImage/Core (= 3.7.6)
+  - SDWebImage/Core (3.7.6)
+
+DEPENDENCIES:
+  - JPSThumbnailAnnotation (from `../`)
+
+EXTERNAL SOURCES:
+  JPSThumbnailAnnotation:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  JPSThumbnailAnnotation: 641c90f56b14fcf0988e9f14f7456952af27b54a
+  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+
+PODFILE CHECKSUM: 252c9aa68295d97a60efcecd4882fee1b582bd7e
+
+COCOAPODS: 1.0.1
