@@ -56,18 +56,26 @@
     
     // Sagrada Familia
     JPSThumbnail *barcelona = [[JPSThumbnail alloc] init];
-//    ottawa.image = [UIImage imageNamed:@"ottawa.jpg"];
-    //exampleURL
-    barcelona.imgUrl = @"https://www.shbarcelona.es/blog/es/wp-content/uploads/2015/10/gaudi-en-barcelona-3-768x741.jpg";
-    barcelona.title = @"BCN Sagrada Familia";
-    barcelona.subtitle = @"By Gaudi!";
+    barcelona.imageURL = @"https://www.shbarcelona.es/blog/es/wp-content/uploads/2015/10/gaudi-en-barcelona-3-768x741.jpg";
+    barcelona.title = @"Sagrada Familia";
+    barcelona.subtitle = @"Barcelona";
     barcelona.coordinate = CLLocationCoordinate2DMake(41.4036f, 2.1744f);
     barcelona.disclosureBlock = ^{ NSLog(@"selected Barcelona"); };
+    
+    //Switzerland mountains
+    JPSThumbnail *switzerland = [[JPSThumbnail alloc] init];
+    switzerland.imageURL = @"https://pbs.twimg.com/media/CkXS4erWEAA5J3b.jpg";
+    switzerland.contentMode = UIViewContentModeScaleAspectFit; // By default Aspect fill
+    switzerland.title = @"Switzerland";
+    switzerland.subtitle = @"Mountains";
+    switzerland.coordinate = CLLocationCoordinate2DMake(47.3769f, 8.5417f);
+    switzerland.disclosureBlock = ^{ NSLog(@"selected Barcelona"); };
     
     return @[[JPSThumbnailAnnotation annotationWithThumbnail:empire],
              [JPSThumbnailAnnotation annotationWithThumbnail:apple],
              [JPSThumbnailAnnotation annotationWithThumbnail:ottawa],
-             [JPSThumbnailAnnotation annotationWithThumbnail:barcelona]];
+             [JPSThumbnailAnnotation annotationWithThumbnail:barcelona],
+             [JPSThumbnailAnnotation annotationWithThumbnail:switzerland]];
 }
 
 #pragma mark - MKMapViewDelegate

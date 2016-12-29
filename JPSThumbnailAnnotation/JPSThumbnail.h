@@ -13,11 +13,12 @@ typedef void (^ActionBlock)();
 
 @interface JPSThumbnail : NSObject
 
-@property (nonatomic, strong) UIImage *image;
-@property (nonatomic, strong) NSString *imgUrl;
-@property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSString *subtitle;
+@property (nonatomic, strong) UIImage  *image;
+@property (nonatomic, strong) NSString *imageURL;
+@property (nonatomic)         UIViewContentMode contentMode;
+@property (nonatomic, copy)   NSString *title;
+@property (nonatomic, copy)   NSString *subtitle;
 @property (nonatomic, assign) CLLocationCoordinate2D coordinate;
-@property (nonatomic, copy) ActionBlock disclosureBlock;
+@property (nonatomic, copy)   ActionBlock disclosureBlock;
 
 @end
