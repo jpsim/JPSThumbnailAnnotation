@@ -1,8 +1,10 @@
 
 *.xcuserstate
-
 *.xcbkptlist
-
 *.xcscheme
 
-Demo/JPSThumbnailAnnotation.xcodeproj/xcuserdata/zil.xcuserdatad/xcschemes/xcschememanagement.plist
+Demo/JPSThumbnailAnnotation.xcodeproj/xcuserdata/
+Demo/JPSThumbnailAnnotation.xcworkspace/contents.xcworkspacedata
+Demo/Podfile.lock
+
+Demo/Pods/
