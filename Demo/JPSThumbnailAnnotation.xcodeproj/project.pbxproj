@@ -9,12 +9,11 @@
 /* Begin PBXBuildFile section */
 		E875D68A17245D6C00009A6F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E875D68917245D6C00009A6F /* Foundation.framework */; };
 		E875D69217245D6C00009A6F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E875D69017245D6C00009A6F /* InfoPlist.strings */; };
-		E875D69417245D6C00009A6F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E875D69317245D6C00009A6F /* main.m */; };
-		E875D69817245D6C00009A6F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E875D69717245D6C00009A6F /* AppDelegate.m */; };
 		E875D69A17245D6C00009A6F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E875D69917245D6C00009A6F /* Default.png */; };
 		E875D69C17245D6C00009A6F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E875D69B17245D6C00009A6F /* Default@2x.png */; };
 		E875D69E17245D6C00009A6F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E875D69D17245D6C00009A6F /* Default-568h@2x.png */; };
-		E875D6A117245D6C00009A6F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E875D6A017245D6C00009A6F /* ViewController.m */; };
+		E89697061AF416DC002F307F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89697051AF416DC002F307F /* AppDelegate.swift */; };
+		E89697081AF41770002F307F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89697071AF41770002F307F /* ViewController.swift */; };
 		E8B7E7D91724669200E93E96 /* JPSThumbnailAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B7E7D81724669200E93E96 /* JPSThumbnailAnnotation.m */; };
 		E8B7E7DC172466B600E93E96 /* JPSThumbnailAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B7E7DB172466B600E93E96 /* JPSThumbnailAnnotationView.m */; };
 		E8EF4F2A1724EE840051DB36 /* JPSThumnail.m in Sources */ = {isa = PBXBuildFile; fileRef = E8EF4F291724EE840051DB36 /* JPSThumnail.m */; };
@@ -30,16 +29,14 @@
 		E875D68B17245D6C00009A6F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		E875D68F17245D6C00009A6F /* JPSThumbnailAnnotation-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JPSThumbnailAnnotation-Info.plist"; sourceTree = "<group>"; };
 		E875D69117245D6C00009A6F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E875D69317245D6C00009A6F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E875D69517245D6C00009A6F /* JPSThumbnailAnnotation-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JPSThumbnailAnnotation-Prefix.pch"; sourceTree = "<group>"; };
-		E875D69617245D6C00009A6F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		E875D69717245D6C00009A6F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E875D69917245D6C00009A6F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		E875D69B17245D6C00009A6F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		E875D69D17245D6C00009A6F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		E875D69F17245D6C00009A6F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E875D6A017245D6C00009A6F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E875D6AA172461FB00009A6F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		E89697041AF416DB002F307F /* JPSThumbnailAnnotation-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JPSThumbnailAnnotation-Bridging-Header.h"; sourceTree = "<group>"; };
+		E89697051AF416DC002F307F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E89697071AF41770002F307F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E8B7E7D71724669200E93E96 /* JPSThumbnailAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPSThumbnailAnnotation.h; sourceTree = "<group>"; };
 		E8B7E7D81724669200E93E96 /* JPSThumbnailAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPSThumbnailAnnotation.m; sourceTree = "<group>"; };
 		E8B7E7DA172466B600E93E96 /* JPSThumbnailAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPSThumbnailAnnotationView.h; sourceTree = "<group>"; };
@@ -99,11 +96,10 @@
 		E875D68D17245D6C00009A6F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				E875D69617245D6C00009A6F /* AppDelegate.h */,
-				E875D69717245D6C00009A6F /* AppDelegate.m */,
-				E875D69F17245D6C00009A6F /* ViewController.h */,
-				E875D6A017245D6C00009A6F /* ViewController.m */,
 				E875D68E17245D6C00009A6F /* Supporting Files */,
+				E89697051AF416DC002F307F /* AppDelegate.swift */,
+				E89697071AF41770002F307F /* ViewController.swift */,
+				E89697041AF416DB002F307F /* JPSThumbnailAnnotation-Bridging-Header.h */,
 			);
 			name = Classes;
 			sourceTree = SOURCE_ROOT;
@@ -116,7 +112,6 @@
 				E8EF4F2B1725027D0051DB36 /* empire.jpg */,
 				E875D68F17245D6C00009A6F /* JPSThumbnailAnnotation-Info.plist */,
 				E875D69017245D6C00009A6F /* InfoPlist.strings */,
-				E875D69317245D6C00009A6F /* main.m */,
 				E875D69517245D6C00009A6F /* JPSThumbnailAnnotation-Prefix.pch */,
 				E875D69917245D6C00009A6F /* Default.png */,
 				E875D69B17245D6C00009A6F /* Default@2x.png */,
@@ -208,10 +203,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E875D69417245D6C00009A6F /* main.m in Sources */,
-				E875D69817245D6C00009A6F /* AppDelegate.m in Sources */,
-				E875D6A117245D6C00009A6F /* ViewController.m in Sources */,
 				E8B7E7D91724669200E93E96 /* JPSThumbnailAnnotation.m in Sources */,
+				E89697061AF416DC002F307F /* AppDelegate.swift in Sources */,
+				E89697081AF41770002F307F /* ViewController.swift in Sources */,
 				E8B7E7DC172466B600E93E96 /* JPSThumbnailAnnotationView.m in Sources */,
 				E8EF4F2A1724EE840051DB36 /* JPSThumnail.m in Sources */,
 			);
@@ -294,7 +288,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JPSThumbnailAnnotation-Prefix.pch";
 				INFOPLIST_FILE = "JPSThumbnailAnnotation-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = JPSThumbnailAnnotation;
+				SWIFT_OBJC_BRIDGING_HEADER = "JPSThumbnailAnnotation-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -307,7 +305,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JPSThumbnailAnnotation-Prefix.pch";
 				INFOPLIST_FILE = "JPSThumbnailAnnotation-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = JPSThumbnailAnnotation;
+				SWIFT_OBJC_BRIDGING_HEADER = "JPSThumbnailAnnotation-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
