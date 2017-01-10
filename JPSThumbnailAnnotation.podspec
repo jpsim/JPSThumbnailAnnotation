@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'JPSThumbnailAnnotation'
-  s.version  = '1.0.0'
+  s.version  = '1.0.1'
   s.platform = :ios
   s.license  = 'MIT'
   s.summary  = 'A simple mapkit annotation for displaying images and details.'
@@ -12,5 +12,9 @@ Pod::Spec.new do |s|
 
   s.source_files = 'JPSThumbnailAnnotation/*.{h,m}'
   s.frameworks   = 'QuartzCore', 'MapKit', 'CoreLocation'
+
+  #specifying dependencies for Web image Downloads
+  s.dependency 'UIActivityIndicator-for-SDWebImage', '~> 1.2'
+
   s.requires_arc = true
 end

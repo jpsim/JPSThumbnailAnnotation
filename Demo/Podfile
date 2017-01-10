@@ -1,0 +1,13 @@
+# Uncomment this line to define a global platform for your project
+platform :ios, "6.0"
+
+#inhibiting all warnings coming from CocoaPods libraries
+inhibit_all_warnings!
+
+target "JPSThumbnailAnnotation" do
+
+pod 'UIActivityIndicator-for-SDWebImage', '~> 1.2'
+
+
+end
+
