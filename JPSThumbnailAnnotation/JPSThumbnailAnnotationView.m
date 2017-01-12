@@ -128,6 +128,7 @@ static CGFloat const kJPSThumbnailAnnotationViewAnimationDuration = 0.25f;
     self.subtitleLabel.text = thumbnail.subtitle;
     self.imageView.image = thumbnail.image;
     self.disclosureBlock = thumbnail.disclosureBlock;
+    self.imageView.contentMode = thumbnail.contentMode;
 }
 
 #pragma mark - JPSThumbnailAnnotationViewProtocol
