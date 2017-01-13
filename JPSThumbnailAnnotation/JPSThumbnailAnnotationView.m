@@ -25,6 +25,7 @@ static CGFloat const kJPSThumbnailAnnotationViewAnimationDuration = 0.25f;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *subtitleLabel;
 @property (nonatomic, strong) ActionBlock disclosureBlock;
+@property (nonatomic, strong) UIImageView *disclosureImageView;
 
 @property (nonatomic, strong) CAShapeLayer *bgLayer;
 @property (nonatomic, strong) UIButton *disclosureButton;
@@ -57,6 +58,7 @@ static CGFloat const kJPSThumbnailAnnotationViewAnimationDuration = 0.25f;
     [self setupImageView];
     [self setupTitleLabel];
     [self setupSubtitleLabel];
+    [self setUpDisclosureImage];
     [self setupDisclosureButton];
     [self setLayerProperties];
     [self setDetailGroupAlpha:0.0f];
@@ -87,17 +89,27 @@ static CGFloat const kJPSThumbnailAnnotationViewAnimationDuration = 0.25f;
     [self addSubview:_subtitleLabel];
 }
 
+- (void) setUpDisclosureImage{
+    _disclosureImageView.tintColor = [UIColor grayColor];
+    UIImage *disclosureIndicatorImage = [JPSThumbnailAnnotationView disclosureButtonImage];
+    _disclosureImageView = [[ UIImageView alloc ] initWithImage:disclosureIndicatorImage];
+    _disclosureImageView.frame = CGRectMake(kJPSThumbnailAnnotationViewExpandOffset/2.0f + self.frame.size.width/2.0f + 8.0f,
+                                            26.5f,
+                                            disclosureIndicatorImage.size.width,
+                                            disclosureIndicatorImage.size.height);
+    
+    [self addSubview:_disclosureImageView];
+}
+
 - (void)setupDisclosureButton {
     BOOL iOS7 = [[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0f;
     UIButtonType buttonType = iOS7 ? UIButtonTypeSystem : UIButtonTypeCustom;
     _disclosureButton = [UIButton buttonWithType:buttonType];
     _disclosureButton.tintColor = [UIColor grayColor];
-    UIImage *disclosureIndicatorImage = [JPSThumbnailAnnotationView disclosureButtonImage];
-    [_disclosureButton setImage:disclosureIndicatorImage forState:UIControlStateNormal];
-    _disclosureButton.frame = CGRectMake(kJPSThumbnailAnnotationViewExpandOffset/2.0f + self.frame.size.width/2.0f + 8.0f,
-                                         26.5f,
-                                         disclosureIndicatorImage.size.width,
-                                         disclosureIndicatorImage.size.height);
+    _disclosureButton.frame = CGRectMake(self.frame.origin.x - kJPSThumbnailAnnotationViewExpandOffset/2+10,
+                                         self.frame.origin.y+9,
+                                         self.frame.size.width + kJPSThumbnailAnnotationViewExpandOffset-20,
+                                         self.frame.size.height-33);
     
     [_disclosureButton addTarget:self action:@selector(didTapDisclosureButton) forControlEvents:UIControlEventTouchDown];
     [self addSubview:_disclosureButton];
@@ -147,30 +159,30 @@ static CGFloat const kJPSThumbnailAnnotationViewAnimationDuration = 0.25f;
 
 - (CGPathRef)newBubbleWithRect:(CGRect)rect {
     CGFloat stroke = 1.0f;
-	CGFloat radius = 7.0f;
-	CGMutablePathRef path = CGPathCreateMutable();
-	CGFloat parentX = rect.origin.x + rect.size.width/2.0f;
-	
-	// Determine Size
-	rect.size.width -= stroke + 14.0f;
-	rect.size.height -= stroke + 29.0f;
-	rect.origin.x += stroke / 2.0f + 7.0f;
-	rect.origin.y += stroke / 2.0f + 7.0f;
+    CGFloat radius = 7.0f;
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGFloat parentX = rect.origin.x + rect.size.width/2.0f;
     
-	// Create Callout Bubble Path
-	CGPathMoveToPoint(path, NULL, rect.origin.x, rect.origin.y + radius);
-	CGPathAddLineToPoint(path, NULL, rect.origin.x, rect.origin.y + rect.size.height - radius);
-	CGPathAddArc(path, NULL, rect.origin.x + radius, rect.origin.y + rect.size.height - radius, radius, M_PI, M_PI_2, 1);
-	CGPathAddLineToPoint(path, NULL, parentX - 14.0f, rect.origin.y + rect.size.height);
-	CGPathAddLineToPoint(path, NULL, parentX, rect.origin.y + rect.size.height + 14.0f);
-	CGPathAddLineToPoint(path, NULL, parentX + 14.0f, rect.origin.y + rect.size.height);
-	CGPathAddLineToPoint(path, NULL, rect.origin.x + rect.size.width - radius, rect.origin.y + rect.size.height);
-	CGPathAddArc(path, NULL, rect.origin.x + rect.size.width - radius, rect.origin.y + rect.size.height - radius, radius, M_PI_2, 0.0f, 1.0f);
-	CGPathAddLineToPoint(path, NULL, rect.origin.x + rect.size.width, rect.origin.y + radius);
-	CGPathAddArc(path, NULL, rect.origin.x + rect.size.width - radius, rect.origin.y + radius, radius, 0.0f, -M_PI_2, 1.0f);
-	CGPathAddLineToPoint(path, NULL, rect.origin.x + radius, rect.origin.y);
-	CGPathAddArc(path, NULL, rect.origin.x + radius, rect.origin.y + radius, radius, -M_PI_2, M_PI, 1.0f);
-	CGPathCloseSubpath(path);
+    // Determine Size
+    rect.size.width -= stroke + 14.0f;
+    rect.size.height -= stroke + 29.0f;
+    rect.origin.x += stroke / 2.0f + 7.0f;
+    rect.origin.y += stroke / 2.0f + 7.0f;
+    
+    // Create Callout Bubble Path
+    CGPathMoveToPoint(path, NULL, rect.origin.x, rect.origin.y + radius);
+    CGPathAddLineToPoint(path, NULL, rect.origin.x, rect.origin.y + rect.size.height - radius);
+    CGPathAddArc(path, NULL, rect.origin.x + radius, rect.origin.y + rect.size.height - radius, radius, M_PI, M_PI_2, 1);
+    CGPathAddLineToPoint(path, NULL, parentX - 14.0f, rect.origin.y + rect.size.height);
+    CGPathAddLineToPoint(path, NULL, parentX, rect.origin.y + rect.size.height + 14.0f);
+    CGPathAddLineToPoint(path, NULL, parentX + 14.0f, rect.origin.y + rect.size.height);
+    CGPathAddLineToPoint(path, NULL, rect.origin.x + rect.size.width - radius, rect.origin.y + rect.size.height);
+    CGPathAddArc(path, NULL, rect.origin.x + rect.size.width - radius, rect.origin.y + rect.size.height - radius, radius, M_PI_2, 0.0f, 1.0f);
+    CGPathAddLineToPoint(path, NULL, rect.origin.x + rect.size.width, rect.origin.y + radius);
+    CGPathAddArc(path, NULL, rect.origin.x + rect.size.width - radius, rect.origin.y + radius, radius, 0.0f, -M_PI_2, 1.0f);
+    CGPathAddLineToPoint(path, NULL, rect.origin.x + radius, rect.origin.y);
+    CGPathAddArc(path, NULL, rect.origin.x + radius, rect.origin.y + radius, radius, -M_PI_2, M_PI, 1.0f);
+    CGPathCloseSubpath(path);
     return path;
 }
 
@@ -180,6 +192,7 @@ static CGFloat const kJPSThumbnailAnnotationViewAnimationDuration = 0.25f;
     self.disclosureButton.alpha = alpha;
     self.titleLabel.alpha = alpha;
     self.subtitleLabel.alpha = alpha;
+    self.disclosureImageView.alpha = alpha;
 }
 
 - (void)expand {
