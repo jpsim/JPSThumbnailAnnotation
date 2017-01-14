@@ -10,7 +10,9 @@ Pod::Spec.new do |s|
 
   s.description = 'JPSThumbnailAnnotation is a simple mapkit annotation view for displaying images with clean design and animations.'
 
+  s.ios.deployment_target  = '7.0'
   s.source_files = 'JPSThumbnailAnnotation/*.{h,m}'
   s.frameworks   = 'QuartzCore', 'MapKit', 'CoreLocation'
   s.requires_arc = true
+  s.dependency 'SDWebImage'
 end
