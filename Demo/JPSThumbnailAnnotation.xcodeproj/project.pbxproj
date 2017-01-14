@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		34C69ED51E2561D400149AF5 /* JPSThumbnail.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C69ED41E2561D400149AF5 /* JPSThumbnail.m */; };
 		E875D68A17245D6C00009A6F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E875D68917245D6C00009A6F /* Foundation.framework */; };
 		E875D69217245D6C00009A6F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E875D69017245D6C00009A6F /* InfoPlist.strings */; };
 		E875D69417245D6C00009A6F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E875D69317245D6C00009A6F /* main.m */; };
@@ -16,15 +15,12 @@
 		E875D69C17245D6C00009A6F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E875D69B17245D6C00009A6F /* Default@2x.png */; };
 		E875D69E17245D6C00009A6F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E875D69D17245D6C00009A6F /* Default-568h@2x.png */; };
 		E875D6A117245D6C00009A6F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E875D6A017245D6C00009A6F /* ViewController.m */; };
-		E8B7E7D91724669200E93E96 /* JPSThumbnailAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B7E7D81724669200E93E96 /* JPSThumbnailAnnotation.m */; };
-		E8B7E7DC172466B600E93E96 /* JPSThumbnailAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B7E7DB172466B600E93E96 /* JPSThumbnailAnnotationView.m */; };
 		E8EF4F2C1725027D0051DB36 /* empire.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E8EF4F2B1725027D0051DB36 /* empire.jpg */; };
 		E8EF4F2F1725081E0051DB36 /* ottawa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E8EF4F2D1725081E0051DB36 /* ottawa.jpg */; };
 		E8EF4F301725081E0051DB36 /* apple.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E8EF4F2E1725081E0051DB36 /* apple.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		34C69ED41E2561D400149AF5 /* JPSThumbnail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPSThumbnail.m; sourceTree = "<group>"; };
 		E875D68417245D6C00009A6F /* JPSThumbnailAnnotation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JPSThumbnailAnnotation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E875D68717245D6C00009A6F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E875D68917245D6C00009A6F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -41,13 +37,8 @@
 		E875D69F17245D6C00009A6F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		E875D6A017245D6C00009A6F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E875D6AA172461FB00009A6F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		E8B7E7D71724669200E93E96 /* JPSThumbnailAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPSThumbnailAnnotation.h; sourceTree = "<group>"; };
-		E8B7E7D81724669200E93E96 /* JPSThumbnailAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPSThumbnailAnnotation.m; sourceTree = "<group>"; };
-		E8B7E7DA172466B600E93E96 /* JPSThumbnailAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPSThumbnailAnnotationView.h; sourceTree = "<group>"; };
-		E8B7E7DB172466B600E93E96 /* JPSThumbnailAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPSThumbnailAnnotationView.m; sourceTree = "<group>"; };
 		E8EF4F241724E30C0051DB36 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E8EF4F261724E5870051DB36 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		E8EF4F281724EE840051DB36 /* JPSThumbnail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPSThumbnail.h; sourceTree = "<group>"; };
 		E8EF4F2B1725027D0051DB36 /* empire.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = empire.jpg; sourceTree = "<group>"; };
 		E8EF4F2D1725081E0051DB36 /* ottawa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ottawa.jpg; sourceTree = "<group>"; };
 		E8EF4F2E1725081E0051DB36 /* apple.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = apple.jpg; sourceTree = "<group>"; };
@@ -68,7 +59,6 @@
 		E875D67B17245D6C00009A6F = {
 			isa = PBXGroup;
 			children = (
-				E8B7E7D61724664A00E93E96 /* JPSThumbnailAnnotation */,
 				E875D68D17245D6C00009A6F /* Classes */,
 				E875D68617245D6C00009A6F /* Frameworks */,
 				E875D68517245D6C00009A6F /* Products */,
@@ -123,20 +113,6 @@
 				E875D69D17245D6C00009A6F /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E8B7E7D61724664A00E93E96 /* JPSThumbnailAnnotation */ = {
-			isa = PBXGroup;
-			children = (
-				34C69ED41E2561D400149AF5 /* JPSThumbnail.m */,
-				E8B7E7D71724669200E93E96 /* JPSThumbnailAnnotation.h */,
-				E8B7E7D81724669200E93E96 /* JPSThumbnailAnnotation.m */,
-				E8B7E7DA172466B600E93E96 /* JPSThumbnailAnnotationView.h */,
-				E8B7E7DB172466B600E93E96 /* JPSThumbnailAnnotationView.m */,
-				E8EF4F281724EE840051DB36 /* JPSThumbnail.h */,
-			);
-			name = JPSThumbnailAnnotation;
-			path = ../JPSThumbnailAnnotation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,12 +184,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34C69ED51E2561D400149AF5 /* JPSThumbnail.m in Sources */,
 				E875D69417245D6C00009A6F /* main.m in Sources */,
 				E875D69817245D6C00009A6F /* AppDelegate.m in Sources */,
 				E875D6A117245D6C00009A6F /* ViewController.m in Sources */,
-				E8B7E7D91724669200E93E96 /* JPSThumbnailAnnotation.m in Sources */,
-				E8B7E7DC172466B600E93E96 /* JPSThumbnailAnnotationView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
