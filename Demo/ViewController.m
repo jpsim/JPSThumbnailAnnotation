@@ -54,9 +54,21 @@
     ottawa.coordinate = CLLocationCoordinate2DMake(45.43f, -75.70f);
     ottawa.disclosureBlock = ^{ NSLog(@"selected Ottawa"); };
     
+    // Web Image Example
+    // Seattle Space Needle Building
+    JPSThumbnail *spaceNeedle = [[JPSThumbnail alloc] init];
+    NSString *stringUrl =  @"https://upload.wikimedia.org/wikipedia/commons/2/23/Space_Needle_2011-07-04.jpg"; // Non-squared big image
+    spaceNeedle.imageUrl = [NSURL URLWithString:stringUrl]; // Set web image from url
+    spaceNeedle.contentMode = UIViewContentModeScaleAspectFit; // Set image Aspect to see all image
+    spaceNeedle.title = @"Space Needle";
+    spaceNeedle.subtitle = @"Seattle Landmark";
+    spaceNeedle.coordinate = CLLocationCoordinate2DMake(47.6205f, -122.3493f);
+    spaceNeedle.disclosureBlock = ^{ NSLog(@"selected Space Needle"); };
+    
     return @[[JPSThumbnailAnnotation annotationWithThumbnail:empire],
              [JPSThumbnailAnnotation annotationWithThumbnail:apple],
-             [JPSThumbnailAnnotation annotationWithThumbnail:ottawa]];
+             [JPSThumbnailAnnotation annotationWithThumbnail:ottawa],
+             [JPSThumbnailAnnotation annotationWithThumbnail:spaceNeedle]];
 }
 
 #pragma mark - MKMapViewDelegate

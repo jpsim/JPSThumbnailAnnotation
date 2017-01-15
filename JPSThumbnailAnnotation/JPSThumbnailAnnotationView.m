@@ -9,6 +9,7 @@
 @import QuartzCore;
 #import "JPSThumbnailAnnotationView.h"
 #import "JPSThumbnail.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 NSString * const kJPSThumbnailAnnotationViewReuseID = @"JPSThumbnailAnnotationView";
 
@@ -138,7 +139,19 @@ static CGFloat const kJPSThumbnailAnnotationViewAnimationDuration = 0.25f;
     self.coordinate = thumbnail.coordinate;
     self.titleLabel.text = thumbnail.title;
     self.subtitleLabel.text = thumbnail.subtitle;
-    self.imageView.image = thumbnail.image;
+    if(thumbnail.imageUrl){
+        [self.imageView setIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [self.imageView setShowActivityIndicatorView:YES];
+        [self.imageView sd_setImageWithURL:thumbnail.imageUrl
+                          placeholderImage:thumbnail.image
+                                   options:SDWebImageAllowInvalidSSLCertificates
+                                 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                     [self.imageView setShowActivityIndicatorView:NO];
+                                 }];
+    }
+    else{
+        self.imageView.image = thumbnail.image;
+    }
     self.disclosureBlock = thumbnail.disclosureBlock;
     self.imageView.contentMode = thumbnail.contentMode;
 }
